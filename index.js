@@ -1,31 +1,17 @@
 var express = require('express')
 var app = express()
 
+var fs = require("fs");
+var text = fs.readFileSync("./mytext.txt");
+var textByLine = text.split("\n");
+
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', function(request, response) {
-  response.send('Hello World!');
+  response.send(text);
 })
 
 app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'))
 })
-
-/*function readText(filePath) {
-  var files = evt.target.files;
-  if (files) {
-    for (var i = 0, f; f = files[i]; i++) {
-      var r = new FileReader();
-      r.onload = (function (f) {
-          return function (e) {
-              var contents = e.target.result;
-              alert(contents);
-          };
-      })(f);
-      r.readAsText(f);
-    }
-  } else {
-      alert("Failed to load files");
-  }
-}*/
