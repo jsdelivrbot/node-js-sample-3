@@ -5,14 +5,14 @@ app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', function(request, response) {
-  response.send(readFile("jfk.txt"));
+  response.send('Hello World!');
 })
 
 app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'))
 })
 
-function readText(filePath) {
+/*function readText(filePath) {
   var files = evt.target.files;
   if (files) {
     for (var i = 0, f; f = files[i]; i++) {
@@ -28,4 +28,4 @@ function readText(filePath) {
   } else {
       alert("Failed to load files");
   }
-}
+}*/
