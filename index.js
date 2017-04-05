@@ -1,9 +1,7 @@
 var express = require('express')
 var app = express()
 
-var fs = require("fs");
-var text = fs.readFileSync("./mytext.txt");
-var textByLine = text.split("\n");
+var text = fs.readFileSync("jfk.txt").toString('utf-8');
 
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
