@@ -4,7 +4,7 @@ var fs = require('fs');
 
 var data = '';
 
-var readStream = fs.createReadStream('my-file.txt', 'utf8');
+var readStream = fs.createReadStream('jfk.txt', 'utf8');
 
 readStream.on('data', function(chunk) {
     data += chunk;
