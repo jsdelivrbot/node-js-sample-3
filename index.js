@@ -2,12 +2,15 @@ var express = require('express');
 var app = express();
 var fs = require('fs');
 
-try {
-    var data = fs.readFileSync('jkf.txt', 'utf8');
+var data = '';
+
+var readStream = fs.createReadStream('my-file.txt', 'utf8');
+
+readStream.on('data', function(chunk) {
+    data += chunk;
+}).on('end', function() {
     console.log(data);
-} catch(e) {
-    console.log('Error:', e.stack);
-}
+});
 
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
