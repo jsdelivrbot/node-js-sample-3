@@ -1,22 +1,22 @@
 var express = require('express')
 var app = express()
 
-function readSingleFile(evt) {
-    //Retrieve the first (and only!) File from the FileList object
-    var f = evt.target.files[0];
-  if(f){
-    var r = new FileReader();
-      r.onload = function(e) {
-	   var contents = e.target.result;
-       }
-    }
+var txtFile = "jfk.txt";
+var myFile = new File(txtFile);
+
+myFile.open("r");
+var str = "";
+while (!file.eof) {
+	// read each line of text
+	str += file.readln() + "\n";
 }
+file.close();
 
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', function(request, response) {
-  response.send(readSingleFile("jfk.txt"));
+  response.send(str);
 })
 
 app.listen(app.get('port'), function() {
