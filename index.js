@@ -1,22 +1,11 @@
 var express = require('express');
 var app = express();
 
-function readTextFile(filepath) {
-	var str = "";
-	var txtFile = new File(filepath);
-	txtFile.open("r");
-	while (!txtFile.eof) {
-		// read each line of text
-		str += txtFile.readln() + "\n";
-	}
-	return str;
-}
-
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', function(request, response) {
-  response.send(readTextFile("jfk.txt"));
+  response.send("Hello");
 })
 
 app.listen(app.get('port'), function() {
