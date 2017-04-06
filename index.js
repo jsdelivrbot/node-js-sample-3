@@ -1,22 +1,22 @@
 var express = require('express')
 var app = express()
 
-//var txtFile = "little.txt";
-//var myFile = new File(txtFile);
-
-/*myFile.open("r");
-var str = "";
-while (!file.eof) {
-	// read each line of text
-	str += file.readln() + "\n";
+function readTextFile(filepath) {
+	var str = "";
+	var txtFile = new File(filepath);
+	txtFile.open("r");
+	while (!txtFile.eof) {
+		// read each line of text
+		str += txtFile.readln() + "\n";
+	}
+	return str;
 }
-file.close();*/
 
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', function(request, response) {
-  response.send("rawr");
+  response.send(readTextFile("jfk.txt"));
 })
 
 app.listen(app.get('port'), function() {
