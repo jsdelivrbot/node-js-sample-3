@@ -1,7 +1,7 @@
 var express = require('express')
 var app = express()
 
-var txtFile = "jfk.txt";
+var txtFile = "little.txt";
 var myFile = new File(txtFile);
 
 myFile.open("r");
